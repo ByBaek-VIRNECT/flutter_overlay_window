@@ -139,11 +139,11 @@ public class OverlayService extends Service {
         flutterView.addOnLayoutChangeListener((view, newX, newY, newWidth, newHeight, oldX, oldY, oldWidth, oldHeight) -> {
             WindowManager windowService = (WindowManager) getSystemService(WINDOW_SERVICE);
             int currentRotation = windowService.getDefaultDisplay().getRotation();
-            boolean isLandscape = false;
+            boolean isLandscape = true;
             if (Surface.ROTATION_0 == currentRotation) {
-                isLandscape = false;
+                isLandscape = true;
             } else if (Surface.ROTATION_180 == currentRotation) {
-                isLandscape = false;
+                isLandscape = true;
             } else if (Surface.ROTATION_90 == currentRotation) {
                 isLandscape = true;
             } else if (Surface.ROTATION_270 == currentRotation) {
@@ -151,13 +151,13 @@ public class OverlayService extends Service {
             }
 
             if (oldWidth == 0 && oldHeight == 0) {
-                initialWidth = newWidth;
-                initialHeight = newHeight;
+                initialWidth = 1280;
+                initialHeight = 720;
                 initialOrientationIsLandscape = isLandscape;
             }
 
-            mCurrentWidth = newWidth;
-            mCurrentHeight = newHeight;
+            mCurrentWidth = 1280;
+            mCurrentHeight = 720;
             mIsLandscape = isLandscape;
             mCurrentRotation = currentRotation;
 
