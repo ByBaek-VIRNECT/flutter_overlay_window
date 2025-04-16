@@ -156,13 +156,13 @@ public class OverlayService extends Service {
             }
 
             if (oldWidth == 0 && oldHeight == 0) {
-                initialWidth = 1280;
-                initialHeight = 720;
+                initialWidth = newWidth;
+                initialHeight = newHeight;
                 initialOrientationIsLandscape = isLandscape;
             }
 
-            mCurrentWidth = 1280;
-            mCurrentHeight = 720;
+            mCurrentWidth = newWidth;
+            mCurrentHeight = newHeight;
             mIsLandscape = isLandscape;
             mCurrentRotation = currentRotation;
 
