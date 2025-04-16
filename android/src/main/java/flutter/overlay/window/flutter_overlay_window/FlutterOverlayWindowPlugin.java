@@ -80,6 +80,7 @@ public class FlutterOverlayWindowPlugin implements
             String overlayTitle = call.argument("overlayTitle");
             String overlayContent = call.argument("overlayContent");
             String notificationVisibility = call.argument("notificationVisibility");
+            boolean isSmartGlasses = call.argument("isSmartGlasses");
             boolean enableDrag = call.argument("enableDrag");
             String positionGravity = call.argument("positionGravity");
 
@@ -96,6 +97,7 @@ public class FlutterOverlayWindowPlugin implements
             final Intent intent = new Intent(context, OverlayService.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+            intent.putExtra("isSmartGlasses",isSmartGlasses);
             context.startService(intent);
             result.success(null);
         } else if (call.method.equals("isOverlayActive")) {

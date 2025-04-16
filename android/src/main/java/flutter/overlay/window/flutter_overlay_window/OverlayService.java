@@ -78,6 +78,7 @@ public class OverlayService extends Service {
     public int onStartCommand(Intent intent, int flags, int startId) {
         mResources = getApplicationContext().getResources();
         boolean isCloseWindow = intent.getBooleanExtra(INTENT_EXTRA_IS_CLOSE_WINDOW, false);
+        boolean isSmartGlasses = intent.getBooleanExtra("isSmartGlasses",false);
         if (isCloseWindow) {
             if (windowManager != null) {
                 windowManager.removeView(flutterView);
@@ -139,14 +140,18 @@ public class OverlayService extends Service {
         flutterView.addOnLayoutChangeListener((view, newX, newY, newWidth, newHeight, oldX, oldY, oldWidth, oldHeight) -> {
             WindowManager windowService = (WindowManager) getSystemService(WINDOW_SERVICE);
             int currentRotation = windowService.getDefaultDisplay().getRotation();
-            boolean isLandscape = true;
+            boolean isLandscape = false;
             if (Surface.ROTATION_0 == currentRotation) {
-                isLandscape = true;
+                isLandscape = false;
             } else if (Surface.ROTATION_180 == currentRotation) {
-                isLandscape = true;
+                isLandscape = false;
             } else if (Surface.ROTATION_90 == currentRotation) {
                 isLandscape = true;
             } else if (Surface.ROTATION_270 == currentRotation) {
+                isLandscape = true;
+            }
+
+            if(isSmartGlasses){
                 isLandscape = true;
             }
 
@@ -169,6 +174,11 @@ public class OverlayService extends Service {
                     initialHeight,
                     initialWidth
             );
+
+            if(isSmartGlasses){
+                width = 1280;
+                height = 720;
+            }
 
             params.width = width;
             params.height = height;

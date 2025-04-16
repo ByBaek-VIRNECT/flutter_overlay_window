@@ -35,6 +35,7 @@ class FlutterOverlayWindow {
     OverlayFlag flag = OverlayFlag.defaultFlag,
     String overlayTitle = "overlay activated",
     String? overlayContent,
+    bool isSmartGlasses = false,
     bool enableDrag = false,
     PositionGravity positionGravity = PositionGravity.none,
   }) async {
@@ -50,6 +51,7 @@ class FlutterOverlayWindow {
         "enableDrag": enableDrag,
         "notificationVisibility": visibility.name,
         "positionGravity": positionGravity.name,
+        "isSmartGlasses" : isSmartGlasses
       },
     );
   }
