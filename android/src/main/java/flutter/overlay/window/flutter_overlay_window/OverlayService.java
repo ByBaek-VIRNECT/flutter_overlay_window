@@ -176,8 +176,8 @@ public class OverlayService extends Service {
             );
 
             if(isSmartGlasses){
-                width = 1280;
-                height = 720;
+                width = 854;
+                height = 480;
             }
 
             params.width = width;
