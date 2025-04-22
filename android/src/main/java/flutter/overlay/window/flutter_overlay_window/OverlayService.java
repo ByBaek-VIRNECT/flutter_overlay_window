@@ -155,6 +155,8 @@ public class OverlayService extends Service {
                 isLandscape = true;
             }
 
+            android.util.Log.d("by_debug", "newWidth = "+newWidth+" // newHeight = "+newHeight);
+
             if (oldWidth == 0 && oldHeight == 0) {
                 initialWidth = newWidth;
                 initialHeight = newHeight;
@@ -174,6 +176,8 @@ public class OverlayService extends Service {
                     initialHeight,
                     initialWidth
             );
+
+            android.util.Log.d("by_debug", "width = "+width+" // height = "+height);
 
             if(isSmartGlasses){
                 width = 854;
