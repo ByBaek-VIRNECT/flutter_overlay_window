@@ -179,10 +179,10 @@ public class OverlayService extends Service {
 
             android.util.Log.d("by_debug", "width = "+width+" // height = "+height);
 
-            if(isSmartGlasses){
-                width = 854;
-                height = 480;
-            }
+//            if(isSmartGlasses){
+//                width = 854;
+//                height = 480;
+//            }
 
             params.width = width;
             params.height = height;
